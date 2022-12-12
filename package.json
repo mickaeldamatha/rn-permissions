@@ -1,6 +1,6 @@
 {
   "name": "mkdm-rn-permissions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Native Permissions provider for push notifications and device capabilities.",
   "private": false,
   "main": "lib/index.js",
