@@ -30,6 +30,28 @@ export default function App() {
 }
 ```
 
+## Initialization
+
+First run...
+
+```sh
+    yarn add expo-notifications expo-camera
+```
+
+Or
+
+```sh
+    npm i expo-notifications expo-camera
+```
+
+And...
+
+```sh
+    yarn add mkdm-rn-permissions
+```
+
+## Properties and Methods
+
 | PROPERTIES    | TYPE    | Default | Description                                                                |
 | ------------- | ------- | ------- | -------------------------------------------------------------------------- |
 | camera        | boolean | false   | If true, camera permission will be display at first app launch.            |
