@@ -4,7 +4,7 @@
 
 ```javascript
 import * as React from "react";
-import PermissionsProvider from "mkdm-rn-permissions";
+import RNPermissionProvider from "mkdm-rn-permissions";
 
 export default function App() {
   const sendPushTokenToServer = async (token) => {
@@ -15,7 +15,7 @@ export default function App() {
 
   const onPermissionError = (error) => console.log(error);
   return (
-    <PermissionsProvider
+    <RNPermissionProvider
       camera={true}
       microphone={false}
       notifications={true}
@@ -25,7 +25,7 @@ export default function App() {
       {/*
         The rest of your app goes here
       */}
-    </PermissionsProvider>
+    </RNPermissionProvider>
   );
 }
 ```
@@ -35,3 +35,10 @@ export default function App() {
 | camera        | boolean | false   | If true, camera permission will be display at first app launch.            |
 | microphone    | boolean | false   | If true, microphone permission will be display at first app launch.        |
 | notifications | boolean | false   | If true,push notifications permission will be display at first app launch. |
+
+| METHODS                    | Description                              |
+| -------------------------- | ---------------------------------------- |
+| handlePushToken            | Get push token as param                  |
+| handleError                | Get error message as param               |
+| handleNotification         | Get Notification object as param         |
+| handleNotificationResponse | Get NotificationResponse object as param |

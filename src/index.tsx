@@ -10,7 +10,7 @@ import {
   NotificationResponse,
 } from "expo-notifications";
 
-export default function PermissionProvider(props: {
+export default function RNPermissionProvider(props: {
   children: ReactNode;
   camera?: boolean;
   notifications?: boolean;
