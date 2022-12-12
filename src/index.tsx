@@ -15,10 +15,10 @@ export default function RNPermissionProvider(props: {
   camera?: boolean;
   notifications?: boolean;
   microphone?: boolean;
-  handleNotificationResponse: (response: NotificationResponse) => void;
-  handleNotification: (notification: Notification) => void;
-  handlePushToken: (token: string) => void;
-  handleError: (error: string) => void;
+  handleNotificationResponse?: (response: NotificationResponse) => void;
+  handleNotification?: (notification: Notification) => void;
+  handlePushToken?: (token: string) => void;
+  handleError?: (error: string) => void;
 }) {
   const notificationListener = useRef<NativeEventSubscription>();
   const responseListener = useRef<NativeEventSubscription>();
@@ -46,14 +46,15 @@ export default function RNPermissionProvider(props: {
           finalStatus = status;
         }
         if (finalStatus !== "granted") {
-          props.handleError("Unable to get token.");
+          props.handleError && props.handleError("Unable to get token.");
           return;
         }
         const token = await Notifications.getExpoPushTokenAsync();
 
-        props.handlePushToken(token.data);
+        props.handlePushToken && props.handlePushToken(token.data);
       } else {
-        props.handleError("Not available on simulator device.");
+        props.handleError &&
+          props.handleError("Not available on simulator device.");
       }
 
       if (Platform.OS === "android") {
@@ -70,12 +71,13 @@ export default function RNPermissionProvider(props: {
 
       notificationListener.current =
         Notifications.addNotificationReceivedListener((notification) => {
-          props.handleNotification(notification);
+          props.handleNotification && props.handleNotification(notification);
         });
 
       responseListener.current =
         Notifications.addNotificationResponseReceivedListener((response) => {
-          props.handleNotificationResponse(response);
+          props.handleNotificationResponse &&
+            props.handleNotificationResponse(response);
         });
 
       return () => {
