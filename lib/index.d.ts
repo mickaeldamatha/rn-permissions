@@ -8,5 +8,5 @@ export default function PermissionProvider(props: {
     handleNotificationResponse: (response: NotificationResponse) => void;
     handleNotification: (notification: Notification) => void;
     handlePushToken: (token: string) => void;
-    handleError: (message: string) => void;
+    handleError: (error: string) => void;
 }): JSX.Element;

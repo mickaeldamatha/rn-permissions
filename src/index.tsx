@@ -1,7 +1,7 @@
 import { isDevice } from "expo-device";
 import { useEffect, ReactNode } from "react";
 import * as Notifications from "expo-notifications";
-import { Platform } from "react-native";
+import { NativeEventSubscription, Platform } from "react-native";
 import { Camera } from "expo-camera";
 import { useRef } from "react";
 import {
@@ -18,13 +18,12 @@ export default function PermissionProvider(props: {
   handleNotificationResponse: (response: NotificationResponse) => void;
   handleNotification: (notification: Notification) => void;
   handlePushToken: (token: string) => void;
-  handleError: (message: string) => void;
+  handleError: (error: string) => void;
 }) {
-  const notificationListener = useRef<any>();
-  const responseListener = useRef<any>();
+  const notificationListener = useRef<NativeEventSubscription>();
+  const responseListener = useRef<NativeEventSubscription>();
 
   useEffect(() => {
-    
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
         shouldShowAlert: true,
@@ -80,10 +79,14 @@ export default function PermissionProvider(props: {
         });
 
       return () => {
-        Notifications.removeNotificationSubscription(
-          notificationListener.current
-        );
-        Notifications.removeNotificationSubscription(responseListener.current);
+        notificationListener.current &&
+          Notifications.removeNotificationSubscription(
+            notificationListener.current
+          );
+        responseListener.current &&
+          Notifications.removeNotificationSubscription(
+            responseListener.current
+          );
       };
     })();
   }, []);
