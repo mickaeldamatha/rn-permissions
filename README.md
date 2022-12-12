@@ -30,5 +30,8 @@ export default function App() {
 }
 ```
 
-| Properties | Description |
-| ---------- | ----------- |
+| PROPERTIES    | TYPE    | Default | Description                                                                |
+| ------------- | ------- | ------- | -------------------------------------------------------------------------- |
+| camera        | boolean | false   | If true, camera permission will be display at first app launch.            |
+| microphone    | boolean | false   | If true, microphone permission will be display at first app launch.        |
+| notifications | boolean | false   | If true,push notifications permission will be display at first app launch. |
