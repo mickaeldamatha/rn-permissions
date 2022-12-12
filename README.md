@@ -36,6 +36,8 @@ export default function App() {
 | microphone    | boolean | false   | If true, microphone permission will be display at first app launch.        |
 | notifications | boolean | false   | If true,push notifications permission will be display at first app launch. |
 
+###
+
 | METHODS                    | Description                              |
 | -------------------------- | ---------------------------------------- |
 | handlePushToken            | Get push token as param                  |
